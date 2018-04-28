@@ -1,5 +1,6 @@
 package com.example.luisanibal.personasdiplomado;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,5 +66,13 @@ public class AgregarPersona extends AppCompatActivity {
     public void limpiar(View v){
         limpiar();
     }
+
+    public void onBackPressed(){
+        finish();
+        Intent i = new Intent(AgregarPersona.this,Principal.class);
+        startActivity(i);
+    }
 }
+
+
 
