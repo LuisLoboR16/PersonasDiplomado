@@ -4,7 +4,7 @@
     <string name="cedula">Cedula</string>
     <string name="nombre">Nombre</string>
     <string name="apellido">Apellido</string>
-    <string name="agregarpersona" >Agregar Persona</string>
+    <string name="agregarpersona">Agregar Persona</string>
     <string name="guardar">Guardar</string>
     <string name="limpiar">Limpiar</string>
     <string name="masculino">Masculino</string>
@@ -15,4 +15,9 @@
         <item>@string/femenino</item>
     </string-array>
     <string name="mensaje_guardado">Persona Guardada Exitosamente</string>
+    <string name="datos">Datos</string>
+    <string name="datospersonas">Datos de la Persona</string>
+    <string name="sexo">Sexo</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
 </resources>

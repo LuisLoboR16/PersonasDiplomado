@@ -12,6 +12,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class Principal extends AppCompatActivity {
@@ -20,53 +26,55 @@ public class Principal extends AppCompatActivity {
     private ArrayList<Persona> personas;
     private AdaptadorPersona adapter;
     private LinearLayoutManager llm;
+    private DatabaseReference databaseReference;
+    private String bd="personas";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         lstOpciones = findViewById(R.id.lstOpciones);
-        personas = Datos.obtener();
+
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
+        personas = new ArrayList<>();
         adapter = new AdaptadorPersona(personas);
 
         lstOpciones.setLayoutManager(llm);
         lstOpciones.setAdapter(adapter);
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child(bd).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                i = new Intent(Principal.this,AgregarPersona.class);
-                startActivity(i);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                personas.clear();
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot:dataSnapshot.getChildren()){
+                        Persona p=snapshot.getValue(Persona.class);
+                        personas.add(p);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+                Datos.setPersonas(personas);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+
+    }
+    public void agregarPersonas( View v){
+
+        i = new Intent(Principal.this,AgregarPersona.class);
+        startActivity(i);
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_principal, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
+
+

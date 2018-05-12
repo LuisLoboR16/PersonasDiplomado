@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "548937915543",
+    "firebase_url": "https://personas-cfea2.firebaseio.com",
+    "project_id": "personas-cfea2",
+    "storage_bucket": "personas-cfea2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548937915543:android:9844bfd4a99bfd87",
+        "android_client_info": {
+          "package_name": "com.example.luisanibal.personasdiplomado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "548937915543-jilise2qgiqj4m5ouj9bn2vgnk5th0vo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.luisanibal.personasdiplomado",
+            "certificate_hash": "cc987d6df733434a997d6d53327047eee7069435"
+          }
+        },
+        {
+          "client_id": "548937915543-su6cqgfh40gu056meual1ofat66fpuuv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCObDrgWt_ld1DeO3KG8TVOLj8bxLtMWA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "548937915543-su6cqgfh40gu056meual1ofat66fpuuv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -22,6 +22,7 @@ public class AgregarPersona extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_persona);
+
         txtCedula = findViewById(R.id.txtCedula);
         txtNombre = findViewById(R.id.txtNombre);
         txtApellido = findViewById(R.id.txtApellido);
@@ -38,15 +39,17 @@ public class AgregarPersona extends AppCompatActivity {
     }
 
     public void guardar(View v){
-        String ced, nomb,apell;
+        String ced, nomb,apell,id;
         int sexo, foto;
+
+        id=Datos.getId();
         foto = Metodos.fotoAleatoria(fotos);
         ced = txtCedula.getText().toString();
         nomb = txtNombre.getText().toString();
         apell = txtApellido.getText().toString();
         sexo = cmbSexo.getSelectedItemPosition();
 
-        Persona p = new Persona(foto,ced,nomb,apell,sexo);
+        Persona p = new Persona(id,foto,ced,nomb,apell,sexo);
         p.guardar();
 
         Snackbar.make(v,getResources().getString(R.string.mensaje_guardado),Snackbar.LENGTH_SHORT)

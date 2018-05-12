@@ -1,15 +1,25 @@
 package com.example.luisanibal.personasdiplomado;
 
 public class Persona {
+    private String id;
     private int foto,sexo;
     private String cedula,nombre,apellido;
 
-    public Persona(int foto, String cedula, String nombre, String apellido,int sexo) {
+    public Persona(String id, int foto, String cedula, String nombre, String apellido,int sexo) {
+        this.id = id;
         this.foto = foto;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getFoto() {
