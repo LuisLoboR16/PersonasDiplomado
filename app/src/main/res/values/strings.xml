@@ -20,4 +20,9 @@
     <string name="sexo">Sexo</string>
     <string name="modificar">Modificar</string>
     <string name="eliminar">Eliminar</string>
+    <string name="mensajeeliminar">¿Está seguro que desea eliminar a esta persona?</string>
+    <string name="eliminarsi">Si</string>
+    <string name="eliminarno">No</string>
+    <string name="modificarpesona">Modificar datos</string>
+
 </resources>

@@ -20,14 +20,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Principal extends AppCompatActivity {
+public class Principal extends AppCompatActivity implements AdaptadorPersona.OnPersonaClickListener{
     private RecyclerView lstOpciones;
     private Intent i;
     private ArrayList<Persona> personas;
     private AdaptadorPersona adapter;
     private LinearLayoutManager llm;
     private DatabaseReference databaseReference;
-    private String bd="personas";
+    private String bd="Personas";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class Principal extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         personas = new ArrayList<>();
-        adapter = new AdaptadorPersona(personas);
+        adapter = new AdaptadorPersona(personas,this);
 
         lstOpciones.setLayoutManager(llm);
         lstOpciones.setAdapter(adapter);
@@ -72,9 +72,24 @@ public class Principal extends AppCompatActivity {
 
         i = new Intent(Principal.this,AgregarPersona.class);
         startActivity(i);
+        finish();
 
     }
 
+    @Override
+    public void onPersonaClick(Persona p) {
+        Intent i = new Intent(Principal.this, DetallerPersona.class);
+        Bundle b = new Bundle();
+        b.putString("id",p.getId());
+        b.putString("cedula",p.getCedula());
+        b.putString("nombre",p.getNombre());
+        b.putString("apellido",p.getApellido());
+        b.putInt("foto",p.getFoto());
+        b.putInt("sexo",p.getSexo());
+        i.putExtra("datos",b);
+        startActivity(i);
+        finish();
+    }
 }
 
 

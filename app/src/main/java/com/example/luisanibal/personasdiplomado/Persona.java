@@ -5,6 +5,15 @@ public class Persona {
     private int foto,sexo;
     private String cedula,nombre,apellido;
 
+
+    public Persona() {
+
+    }
+
+    public Persona(String id) {
+        this.id = id;
+    }
+
     public Persona(String id, int foto, String cedula, String nombre, String apellido,int sexo) {
         this.id = id;
         this.foto = foto;
@@ -64,6 +73,13 @@ public class Persona {
 
     public void guardar(){
         Datos.agregar(this);
+    }
+
+    public void eliminar(){
+        Datos.eliminarPersona(this);
+    }
+    public void modificar(){
+        Datos.modificarPersona(this);
     }
 }
 
