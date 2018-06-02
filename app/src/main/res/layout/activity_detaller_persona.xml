@@ -172,11 +172,12 @@
             android:id="@+id/menu_modificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="modificar"
             android:src="@android:drawable/ic_menu_edit"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccent"
-            fab:fab_size="mini"
-            fab:fab_label="@string/modificar" />
+            fab:fab_label="@string/modificar"
+            fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_eliminar"

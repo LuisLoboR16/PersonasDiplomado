@@ -75,7 +75,7 @@ public class DetallerPersona extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
-        });c
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }

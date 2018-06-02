@@ -24,5 +24,7 @@
     <string name="eliminarsi">Si</string>
     <string name="eliminarno">No</string>
     <string name="modificarpesona">Modificar datos</string>
+    <string name="mensaje_error_cedula_existente">La cedula ya se encuentra registrada</string>
+    <string name="mensaje_modificar">Persona Modificada existosamente</string>
 
 </resources>

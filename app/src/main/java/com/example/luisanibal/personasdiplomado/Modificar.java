@@ -19,6 +19,8 @@ public class Modificar extends AppCompatActivity {
     private String ced,nomb,apell,id;
     private int sex;
     private ArrayList<Integer> fotos;
+    private Bundle b;
+    private Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,38 +36,44 @@ public class Modificar extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,opc);
         cmbSexo.setAdapter(adapter);
 
+        i = getIntent();
+        b = i.getBundleExtra("datos");
+
+        txtCedula.setText(b.getString("cedula"));
+        txtNombre.setText(b.getString("nombre"));
+        txtApellido.setText(b.getString("apellido"));
+        cmbSexo.setSelection(b.getInt("sexo"));
+
     }
 
     public void guardar(View v){
         String ced, nomb,apell,id;
         int sexo, foto;
 
-        id=Datos.getId();
-        foto = Metodos.fotoAleatoria(fotos);
+        id=b.getString("id");
+        foto = b.getInt("foto");
         ced = txtCedula.getText().toString();
         nomb = txtNombre.getText().toString();
         apell = txtApellido.getText().toString();
         sexo = cmbSexo.getSelectedItemPosition();
-
         Persona p = new Persona(id,foto,ced,nomb,apell,sexo);
+        if(b.getString("cedula").equals(ced)){
+            p.modificar();
+            Snackbar.make(v,getResources().getString(R.string.mensaje_modificar),Snackbar.LENGTH_SHORT)
+                    .setAction("Action",null).show();
+        }else{
+            if(Datos.validar_existencia(Datos.obtener(),ced)){
+                txtCedula.setError(getResources().getString(R.string.mensaje_error_cedula_existente));
+                txtCedula.requestFocus();
+            }else{
+                p.modificar();
+                Snackbar.make(v,getResources().getString(R.string.mensaje_modificar),Snackbar.LENGTH_SHORT)
+                        .setAction("Action",null).show();
+
+            }
+        }
         p.guardar();
 
-        Snackbar.make(v,getResources().getString(R.string.mensaje_guardado),Snackbar.LENGTH_SHORT)
-                .setAction("Action",null).show();
-        limpiar();
-
-    }
-
-    public void limpiar(){
-        txtCedula.setText("");
-        txtNombre.setText("");
-        txtApellido.setText("");
-        cmbSexo.setSelection(0);
-        txtCedula.requestFocus();
-    }
-
-    public void limpiar(View v){
-        limpiar();
     }
 
     public void onBackPressed(){
