@@ -1,8 +1,8 @@
 package com.example.luisanibal.personasdiplomado;
 
 public class Persona {
-    private String id;
-    private int foto,sexo;
+    private String id,foto;
+    private int sexo;
     private String cedula,nombre,apellido;
 
 
@@ -14,7 +14,7 @@ public class Persona {
         this.id = id;
     }
 
-    public Persona(String id, int foto, String cedula, String nombre, String apellido,int sexo) {
+    public Persona(String id, String foto, String cedula, String nombre, String apellido,int sexo) {
         this.id = id;
         this.foto = foto;
         this.cedula = cedula;
@@ -31,11 +31,11 @@ public class Persona {
         this.id = id;
     }
 
-    public int getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(int foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 

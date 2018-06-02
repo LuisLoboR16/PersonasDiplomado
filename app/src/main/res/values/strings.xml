@@ -26,5 +26,16 @@
     <string name="modificarpesona">Modificar datos</string>
     <string name="mensaje_error_cedula_existente">La cedula ya se encuentra registrada</string>
     <string name="mensaje_modificar">Persona Modificada existosamente</string>
-
+    <string name="mensaje_foto">Seleccione la foto</string>
+    <string name="login">Login</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="email">Email</string>
+    <string name="usuario_creado">Usuario creado exitosamente</string>
+    <string name="crear">Crear</string>
+    <string name="principal">Principal</string>
+    <string name="salir">Salir</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="abrir">Abrir</string>
 </resources>

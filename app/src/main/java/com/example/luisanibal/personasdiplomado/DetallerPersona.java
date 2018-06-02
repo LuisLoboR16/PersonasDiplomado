@@ -2,6 +2,7 @@ package com.example.luisanibal.personasdiplomado;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
 public class DetallerPersona extends AppCompatActivity {
     private TextView lblCedula,lblNombre,lblApellido,lblSexo;
     private String[] sexo;
@@ -17,8 +23,9 @@ public class DetallerPersona extends AppCompatActivity {
     private Intent i;
     private ImageView foto;
     private CollapsingToolbarLayout collapsingToolbarLayout;
-    private String ced,nomb,apell,id;
-    private int fot,sex;
+    private String ced,nomb,apell,id,fot;
+    private int sex;
+    private StorageReference storageReference;
 
 
     @Override
@@ -40,7 +47,7 @@ public class DetallerPersona extends AppCompatActivity {
         ced = bundle.getString("cedula");
         nomb = bundle.getString("nombre");
         apell = bundle.getString("apellido");
-        fot = bundle.getInt("foto");
+        fot = bundle.getString("foto");
         sex = bundle.getInt("sexo");
         id = bundle.getString("id");
 
@@ -49,8 +56,13 @@ public class DetallerPersona extends AppCompatActivity {
         lblApellido.setText(apell);
         lblSexo.setText(sexo[sex]);
 
-
-        foto.setImageResource(fot);
+        storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference.child(fot).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(fot).into(foto);
+            }
+        });
         collapsingToolbarLayout.setTitle(nomb+ " " +apell);
     }
 

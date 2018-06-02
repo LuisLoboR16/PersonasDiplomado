@@ -47,11 +47,11 @@ public class Modificar extends AppCompatActivity {
     }
 
     public void guardar(View v){
-        String ced, nomb,apell,id;
-        int sexo, foto;
+        String ced, nomb,apell,id, foto;
+        int sexo;
 
         id=b.getString("id");
-        foto = b.getInt("foto");
+        foto = b.getString("foto");
         ced = txtCedula.getText().toString();
         nomb = txtNombre.getText().toString();
         apell = txtApellido.getText().toString();
